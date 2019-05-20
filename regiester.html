@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<meta charset="utf8">
+		<title>药房网</title>
+		<meta name="keywords" content="药房网，手机买药,仁和药业">
+		<meta name="description" content="仁和药房网(原药房网)是仁和药业旗下网上药店,药房网官方商城是国家药监局认证的正规网上药房,药房网实体药店供货配送,100%正品保证">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<script src="js/jquery-1.8.3.min.js"></script>
+	</head>
+	<body>
+		<header>
+			新用户，<a href="#">请注册</a>
+		</header>
+		<main>
+				<p id="dlp"><a id="dl" href="#">帐户登录</a></p>
+				<hr/>
+				<form id="form-data">
+					<span>用户名:</span><input type="text" name="username" class="login_box" placeholder="建议使用你常用的邮箱" /><br/>
+					<p style="color:red" id="error_username"></p>
+						
+					<span>设置密码:</span><input type="password" name="password" class="login_box" placeholder="6-20字符，可使用字母、数字" /><br/>
+					<p style="color:red" id="error_password"></p>
+					<span>确认密码:</span><input type="password" name="repassword" class="login_box" placeholder="请再次输入密码" />		<br/>
+					<p style="color:red" id="error_repassword"></p>
+					<p style="color:red" id="error_pwd"></p>
+					<span>邮箱:</span><input type="email" name="email" class="login_box" placeholder="请再次输入密码" /><br/>			
+					<p style="color:red" id="error_email"></p>
+					<span>验证码:</span><input id="vcode" type="text" name="vcode" placeholder="请输入验证码" /><img id="img" src="http://192.168.4.233:3000/capt"/><br/>
+					<p><a href="javascript:;" id="changevode">看不清，换一张</a></p><br/>
+					<p style="color:red" id="error_vcode"></p>
+					<input type="checkbox" id="agree" value="1"/>《仁和药房网用户协议》<br/>
+					<p style="color:red" id="error_agree">协议必须允许</p>
+					<button id="regist-btn" type="button">注册</button>
+				</form>
+
+		</main>
+		<script>
+			nums=0;
+		</script>
+		<script src="js/register.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/changevcode.js"></script>
+		<script>
+
+			$(function(){
+				$("#img").attr('src','http://192.168.4.233:3000/capt?'+new Date().getTime())
+				/*利用register函数实现点击按钮后把表单数据序列化提交到指定的地址*/
+				register("regist-btn","form-data","http://192.168.4.233:3000/users/register","/Users/zelin/Desktop/项目/login.html")
+				changevcode("changevode","img")
+			})
+			
+		</script>
+	</body>
+</html>
